@@ -1,14 +1,17 @@
 package com.example.demo.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.demo.model.Turma;
+import com.example.demo.repository.Turmarepository;
 
 public class Turmaservice {
     
     
     @Autowired
-    private TurmaRepositories pautaRepository;
+    private Turmarepository turmaRepository;
 
     public Long contarturmas() {
         return turmaRepository.count();
@@ -38,8 +41,8 @@ public class Turmaservice {
         Turma turmaRecuperada = buscarturma(id);
         if (turmaRecuperada != null) {
             turmaRecuperada.setId(id);
-            if(turma.getTurma()!=null){
-                turmaRecuperada.setTurma(turma.getTurma());
+            if(turma.getNome()!=null){
+                turmaRecuperada.setNome(turma.getNome());
             }
             return turmaRepository.save(turmaRecuperada);
         }
